@@ -7,9 +7,14 @@ import router from './router'
 import axios from 'axios'
 import elementui from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
+
+import './assets/css/bootstrap.min.css'
+import'./assets/css/global.css'
 Vue.use(elementui)
 Vue.use(VueRouter)
-Vue.prototype.$axios=axios
+Vue.prototype.$axios=axios //给vue定义一个全局的变量axios
+
+axios.defaults.baseURL="http://localhost:8088"
 
 Vue.config.productionTip = false
 
