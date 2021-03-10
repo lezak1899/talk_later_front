@@ -35,7 +35,7 @@
 
             <br>
             <el-form-item>
-            <el-button class="btn-block " style="background-color: #EB3D72;color: white;height: 50px;border-radius: 10px" @click="Login">登录</el-button>
+            <el-button class="btn-block " style="background-color: #EB3D72;color: white;height: 50px;border-radius: 10px" @click="login">登录</el-button>
 
               <el-button class="btn-block " style="background-color: #FED150;color: white;height: 50px;border-radius: 10px;margin:0px;margin-top: 10px" @click="resetForm">重置</el-button>
             </el-form-item>
@@ -82,15 +82,14 @@
       login(){
         console.log("11");
         this.$refs.loginFormRef.validate(valid=>{
-            console.log(valid);
             if(!valid) return ;
-
             this.fullscreenLoading = true;
             this.$axios.post("/api/user/login",this.loginForm).then(resp =>{
                 this.fullscreenLoading = false;
-                console.log(resp);
                 if(resp.data.code=='200'){
+                  sessionStorage.setItem("currentUser",JSON.stringify(resp.data.data.currentUser));
                   this.$message({message:"登陆成功！",type: 'success'});
+                  this.$router.push("/home")
                 }
                 else{
                   this.$message.error("登录失败，"+resp.data.message);
