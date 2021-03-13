@@ -16,7 +16,7 @@
         <el-col :span="8">
           <el-input placeholder="请输入用户昵称" v-model="queryEntity.nickname" ><el-button slot="append" icon="el-icon-search" @click="getUserXxList"></el-button></el-input>
         </el-col>
-        <el-col :span="8" ><el-button type="primary" @click="showAddUserDialog">录入新用户</el-button></el-col>
+<!--        <el-col :span="8" ><el-button type="primary" @click="showAddUserDialog">录入新用户</el-button></el-col>-->
       </el-row>
 
       <!-- 数据表格-->
@@ -305,7 +305,6 @@
         // console.log(row.valid);
         this.$axios.get("/api/user/modifyByZdmc?userId="+row.id+"&zdmc=is_valid&value="+row.valid).then(resp =>{
             if(resp.data.code=='200'){
-              sessionStorage.setItem("currentUser",JSON.stringify(resp.data.data.currentUser));
               this.$message({message:"修改成功！",type: 'success'});
             }
             else{
@@ -350,7 +349,7 @@
 
          this.userXxList = resp.data.data.pageUserXx.content;
          this.total = resp.data.data.pageUserXx.totalElements;
-         console.log("userList",this.userXxList);
+         // console.log("userList",this.userXxList);
 
       }
     }

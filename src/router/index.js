@@ -7,6 +7,11 @@ import welcome from '../components/sys/Welcome'
 import userMange from '../components/user/UserMange'
 import operatorMange from '../components/user/OperatorMange'
 import adminMange from '../components/user/AdminMange'
+import roleMange from '../components/sys/RoleMange'
+import menuMange from '../components/sys/MenuMange'
+import operationLog from '../components/sys/OperationLog'
+import statisticalData from '../components/statistics/StatisticalData'
+import task from '../components/statistics/Task'
 
 
 Vue.use(Router)
@@ -27,6 +32,11 @@ const router = new Router({
         {path:'/userMange',component:userMange},
         {path:'/operatorMange',component:operatorMange},
         {path:'/adminMange',component:adminMange},
+        {path:'/roleMange',component:roleMange},
+        {path:'/menuMange',component:menuMange},
+        {path:'/operationLog',component:operationLog},
+        {path:'/statisticalData',component:statisticalData},
+        {path:'/task',component:task},
 
         ]
     },

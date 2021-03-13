@@ -69,7 +69,6 @@
       },
       saveActivePath(activePath){
         sessionStorage.setItem("activePath",activePath);
-
       }
     }
   }

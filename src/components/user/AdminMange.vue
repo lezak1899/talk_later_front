@@ -302,10 +302,8 @@
         this.addUserDialogVisible=true;
       },
       userStateChange(row){
-        // console.log(row.valid);
         this.$axios.get("/api/user/modifyByZdmc?userId="+row.id+"&zdmc=is_valid&value="+row.valid).then(resp =>{
             if(resp.data.code=='200'){
-              sessionStorage.setItem("currentUser",JSON.stringify(resp.data.data.currentUser));
               this.$message({message:"修改成功！",type: 'success'});
             }
             else{
