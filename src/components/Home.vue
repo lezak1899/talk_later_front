@@ -5,6 +5,7 @@
         <img src="../assets/img/liaotian.png" height="70px" >
         <span>回聊后台管理系统</span>
       </div>
+      <el-button  type="primary" @click="logout">退出登录</el-button>
 
     </el-header>
     <el-container >
@@ -53,6 +54,19 @@
       this.activePath=sessionStorage.getItem("activePath");
     },
     methods:{
+      async logout(){
+        var {data:resp} = await this.$axios.get("/api/user/logout");
+
+        if(resp.code==200){
+          sessionStorage.clear();
+          this.$router.push("/login")
+          this.$message.error("注销成功，"+resp.data.message);
+        }else {
+          this.$message.error("注销失败，"+resp.data.message);
+        }
+
+
+      },
       getMenuList(){
         this.$axios.post("/api/menu/getMenuList/"+this.currentUser.id).then(resp =>{
           // console.log(resp);
@@ -86,6 +100,7 @@
     justify-content: space-between;
     color: white;
     font-size: 20px;
+    align-items: center;
   }
 
   .el-header div{
@@ -95,6 +110,10 @@
 
   .el-header div span{
     margin-left: 15px;
+  }
+  .el-header .el-button{
+    height: 40px;
+
   }
 
   .el-aside{

@@ -12,6 +12,7 @@ import menuMange from '../components/sys/MenuMange'
 import operationLog from '../components/sys/OperationLog'
 import statisticalData from '../components/statistics/StatisticalData'
 import task from '../components/statistics/Task'
+import personInfo from '../components/user/PersonInfo'
 
 
 Vue.use(Router)
@@ -37,6 +38,7 @@ const router = new Router({
         {path:'/operationLog',component:operationLog},
         {path:'/statisticalData',component:statisticalData},
         {path:'/task',component:task},
+        {path:'/personInfo',component:personInfo},
 
         ]
     },

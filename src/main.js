@@ -7,17 +7,23 @@ import router from './router'
 import axios from 'axios'
 import elementui from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
-
 import './assets/css/bootstrap.min.css'
 import'./assets/css/global.css'
 Vue.use(elementui)
 Vue.use(VueRouter)
 Vue.prototype.$axios=axios //给vue定义一个全局的变量axios
 axios.defaults.baseURL="http://localhost:8088"
+axios.defaults.withCredentials = true;
+// Vue.config.productionTip = false;
 
+
+
+//操作时间
 import moment from 'moment'
 Vue.prototype.$moment=moment
-
+//echart
+import echarts from 'echarts'
+Vue.prototype.$echarts = echarts
 
 // 基于jwt实现验证
 // axios.interceptors.request.use(config=>{

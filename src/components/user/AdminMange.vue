@@ -108,7 +108,7 @@
           </el-select>
         </el-form-item>
         <el-form-item label="用户类型" prop="usertype">
-          <el-select v-model="checkUserForm.usertype" placeholder="用户类型" :disabled="userFormdisabled">
+          <el-select v-model="checkUserForm.usertype" placeholder="用户类型" :disabled="true">
             <el-option label="回聊用户" value="1"></el-option>
             <el-option label="运维人员" value="2"></el-option>
             <el-option label="系统管理员" value="3"></el-option>
@@ -148,7 +148,7 @@
             { min: 1, max: 8, message: '请输入10位以内的字符，且不能包括特殊字符', trigger: 'blur' },
           ],
           password:[
-            { required: true, message: '用户昵称不能为空', trigger: 'blur' },
+            { required: true, message: '密码不能为空', trigger: 'blur' },
             { min: 1, max: 6, message: '请输入6位以内的字符，且不能包括特殊字符', trigger: 'blur' },
           ]
         },

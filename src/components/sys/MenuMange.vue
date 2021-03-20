@@ -12,7 +12,7 @@
       <!--查询区-->
         <el-row :gutter="20">
           <el-col :span="8">
-            <el-input placeholder="请输入用户账号" v-model="menuQueryEntity.menuName" ><el-button slot="append" icon="el-icon-search" @click="getMenuList"></el-button></el-input>
+            <el-input placeholder="请输入菜单名称" v-model="menuQueryEntity.menuName" ><el-button slot="append" icon="el-icon-search" @click="getMenuList"></el-button></el-input>
           </el-col>
         </el-row>
 
@@ -32,13 +32,6 @@
                        v-model="scope.row.valid" active-value="1" inactive-value="0" @change="roleStateChange(scope.row)"></el-switch>
           </template>
         </el-table-column>
-<!--        <el-table-column label="操作" width="200">-->
-<!--          <template slot-scope="scope">-->
-<!--            <el-tooltip class="item" effect="dark" content="编辑菜单" placement="top" :enterable="false" >-->
-<!--              <el-button type="primary" icon="el-icon-edit" size="mini" @click="distribute(scope.row)"></el-button>-->
-<!--            </el-tooltip>-->
-<!--          </template>-->
-<!--        </el-table-column>-->
       </el-table>
 
       <el-pagination
