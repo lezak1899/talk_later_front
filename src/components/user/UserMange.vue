@@ -11,12 +11,12 @@
       <!--查询区-->
       <el-row :gutter="20">
         <el-col :span="8">
-          <el-input placeholder="请输入用户账号" v-model="queryEntity.userName" ><el-button slot="append" icon="el-icon-search" @click="getUserXxList"></el-button></el-input>
+          <el-input placeholder="请输入用户账号" v-model="queryEntity.userName" ></el-input>
         </el-col>
         <el-col :span="8">
-          <el-input placeholder="请输入用户昵称" v-model="queryEntity.nickname" ><el-button slot="append" icon="el-icon-search" @click="getUserXxList"></el-button></el-input>
+          <el-input placeholder="请输入用户昵称" v-model="queryEntity.nickname" ></el-input>
         </el-col>
-<!--        <el-col :span="8" ><el-button type="primary" @click="showAddUserDialog">录入新用户</el-button></el-col>-->
+        <el-col :span="8" ><el-button type="primary" @click="getUserXxList">查询</el-button></el-col>
       </el-row>
 
       <!-- 数据表格-->
@@ -145,7 +145,7 @@
         checkUserFormRules:{
           nickname:[
             { required: true, message: '用户昵称不能为空', trigger: 'blur' },
-            { min: 1, max: 8, message: '请输入10位以内的字符，且不能包括特殊字符', trigger: 'blur' },
+            { min: 1, max: 10, message: '请输入10位以内的字符，且不能包括特殊字符', trigger: 'blur' },
           ],
           password:[
             { required: true, message: '密码不能为空', trigger: 'blur' },
@@ -175,7 +175,7 @@
         addUserFormRules:{
           username:[
             { required: true, message: '用户账号不能为空', trigger: 'blur' },
-            { min: 8, max: 8, message: '请输入8位的用户账号，且不能包括特殊字符', trigger: 'blur' }
+            { min: 8, max: 10, message: '请输入8~10位的用户账号，且不能包括特殊字符', trigger: 'blur' }
           ],
           nickname:[
             { required: true, message: '用户昵称不能为空', trigger: 'blur' },

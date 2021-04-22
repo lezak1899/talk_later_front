@@ -55,15 +55,34 @@
     },
     methods:{
       async logout(){
-        var {data:resp} = await this.$axios.get("/api/user/logout");
 
-        if(resp.code==200){
-          sessionStorage.clear();
-          this.$router.push("/login")
-          this.$message.error("注销成功，"+resp.data.message);
-        }else {
-          this.$message.error("注销失败，"+resp.data.message);
-        }
+        const that = this
+        this.$confirm('是否退出当前账号', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+           that.$axios.get("/api/user/logout").then(resp=>{
+              if(resp.data.code==200){
+                sessionStorage.clear();
+                this.$router.push("/login")
+                this.$message.success("注销成功，"+resp.data.message);
+              }else {
+                this.$message.error("注销失败，"+resp.data.message);
+              }
+              }
+            );
+        });
+
+        // var {data:resp} = await this.$axios.get("/api/user/logout");
+        //
+        // if(resp.code==200){
+        //   sessionStorage.clear();
+        //   this.$router.push("/login")
+        //   this.$message.error("注销成功，"+resp.data.message);
+        // }else {
+        //   this.$message.error("注销失败，"+resp.data.message);
+        // }
 
 
       },

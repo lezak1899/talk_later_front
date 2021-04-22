@@ -38,10 +38,11 @@
       <el-table border :data="statXxList" style="width: 100%">
         <el-table-column type="index"></el-table-column>
         <el-table-column prop="name" label="统计名称" width="150"></el-table-column>
+        <el-table-column prop="statDate" label="日期" :formatter="formatDate"></el-table-column>
         <el-table-column prop="type" label="类型" :formatter="formatType"></el-table-column>
         <el-table-column prop="total" label="总量" ></el-table-column>
         <el-table-column prop="cycle" label="周期" ></el-table-column>
-        <el-table-column prop="excuteDate" label="上一次执行时间" :formatter="formatDate" ></el-table-column>
+        <el-table-column prop="createdDate" label="任务执行时间" :formatter="formatTimestamp" ></el-table-column>
 
       </el-table>
 
@@ -274,9 +275,9 @@
           },
           series: [{
             data: this.itemData4.y,
-            name:'日信息量',
+            name:'日活跃度',
             type: 'line',
-            showBackground: true,
+            showBackground: false,
             backgroundStyle: {
               color: 'rgba(220, 220, 220, 0.8)'
             }
@@ -301,7 +302,11 @@
       formatDate(row, column, cellValue){
         // console.log(cellValue);
         if(cellValue == null || cellValue =='' ) return "";
-        return this.$moment(cellValue).format("YYYY-MM-DD HH:mm:ss");
+        return this.$moment(cellValue).format("YYYY-MM-DD");
+      },
+      formatTimestamp(row, column, cellValue){
+        if(cellValue == null || cellValue =='' ) return "";
+        return this.$moment.unix(cellValue/1000).format("YYYY-MM-DD HH:mm:ss");
       },
       //请求分页数据
       async getStatList(){

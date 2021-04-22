@@ -63,7 +63,7 @@
         // yhzlList
         this.time.length=0; //清空数组
         for (let i = 0; i < resp.data.data.yhzlList.length; i++) {
-          that.time.push(resp.data.data.yhzlList[i].date+"日");
+          that.time.push(resp.data.data.yhzlList[i].date);
           that.Growth.push(resp.data.data.yhzlList[i].total);
         }
         this.echartsInit()
@@ -141,13 +141,13 @@
   }
   .item2{
 
-    background: #e6a23c;
+    background: #612273;
   }
   .item3{
     background: #409EFF;
   }
   .item4{
-    background: #909399;
+    background: #EB3D72;
   }
   .up_div{
     font-size: 12px;
